@@ -38,7 +38,7 @@ async function setProdutorList(data){
                 </div>
             </div>
             <div class="visitar-infos-card">
-                <a class="botao-visitar-infos-card" href="/accounts/perfil/${ data.id }">
+                <a class="botao-visitar-infos-card" href="/accounts/perfil/${ data.user.id }">
                     Visitar
                     <i class="fa-solid fa-diamond-turn-right"></i>
                 </a>
@@ -66,7 +66,7 @@ async function setMarkers(data, map){
 
 
 async function createMap(){
-    const ma = MAP.setView([-23.555, -46.635], 13);
+    const ma = MAP.setView([-23.555, -46.635], 12);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

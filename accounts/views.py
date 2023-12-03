@@ -23,12 +23,15 @@ def accounts(request):
 
 def perfil(request, id_user):
 
+
     if username := request.user:
         user_obj = User.objects.get(username=username)
-        if user_obj.id == id_user:
-            return render(request, 'perfil-private.html')
+        if str(user_obj.id) == id_user:
+            produtor_obj = Produtor.objects.filter(user__id=id_user).first()
+            return render(request, 'perfil-private.html', {'produtor':produtor_obj})
         else:
-            return render(request, 'perfil-public.html')
+            produtor_obj = Produtor.objects.filter(user__id=id_user).first()
+            return render(request, 'perfil-public.html', {'produtor':produtor_obj})
     else:
         redirect('/accounts/login')
 

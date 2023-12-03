@@ -6,5 +6,5 @@ from accounts.models import *
 
 def home(request):
     produtores = Produtor.objects.all()
-
+    
     return render(request, 'home.html', {'produtores' : produtores})

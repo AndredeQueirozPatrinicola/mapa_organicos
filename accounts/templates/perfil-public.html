@@ -14,7 +14,7 @@
         <div class="infos-perfil">
 
             <div class="title-perfil">
-                <h1>{ produtor.nome_fantasia }</h1>
+                <h1>{{ produtor.nome_fantasia }}</h1>
             </div>
 
             <div class="bio-perfil">
@@ -28,7 +28,7 @@
 
             </div>
 
-            <div class="map-perfil">
+            <div class="map-perfil" id="map-perfil">
 
             </div>
 
@@ -36,4 +36,32 @@
 
     </div>
 
+    
+
 {% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    async function generateMap(){
+        const MAP = L.map('map-perfil')
+        const ma = MAP.setView(["{{ produtor.latitude }}", "{{ produtor.longitude }}"], 15);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(ma); 
+
+        const marker = L.marker(["{{ produtor.latitude }}", "{{ produtor.longitude }}"], {color:"red"}).addTo(ma);
+        marker.bindPopup(`<b>${"{{produtor.nome_fantasia}}"}!</b><br>${"{{produtor.logradouro}}"} - ${"{{produtor.numero}}"}.`).openPopup();
+
+        if("{{produtor.tipo_produtor}}" === 'F'){
+            marker._icon.classList.add("green-marker");
+        }
+        else if("{{produtor.tipo_produtor}}" === 'P'){
+            marker._icon.classList.add("red-marker");
+        }
+    }
+    generateMap()
+</script>
+{% endblock scripts %}
