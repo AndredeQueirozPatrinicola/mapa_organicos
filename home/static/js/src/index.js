@@ -91,9 +91,7 @@ async function addSearchListener(){
 async function getFilterValues(){
     try{
         const nomeProdutor = document.getElementById('value-filter-nome').value;
-        console.log(nomeProdutor)
-        const bairroProdutor = document.getElementById('value-filter-bairro').value;
-        const url = `http://127.0.0.1:9000/accounts/api/v1/accounts/produtores?nomeProdutor=${nomeProdutor}&bairroProdutor=${bairroProdutor}`
+        const url = `http://127.0.0.1:9000/accounts/api/v1/accounts/produtores?nomeProdutor=${nomeProdutor}`
         return url
 
     }catch{

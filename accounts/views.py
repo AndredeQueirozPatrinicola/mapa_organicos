@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
 from django.contrib.auth.forms import AuthenticationForm
 from home.utils import get_zone_coordinates
-
+from django.contrib.auth.decorators import login_required
 import json
 
 # Create your views here.
@@ -20,7 +20,7 @@ import json
 def accounts(request):
     return render(request, "accounts.html")
 
-
+@login_required(login_url="/accounts/login")
 def perfil(request, id_user):
 
 
@@ -44,20 +44,12 @@ class Produtores(APIView):
         if nome_produtor := self.request.GET.get('nomeProdutor'):
             produtores = produtores.filter(nome_fantasia__icontains=nome_produtor)
 
-        if bairro := self.request.GET.get('bairroProdutor'):
+        # if bairro := self.request.GET.get('bairroProdutor'):
 
-            zona = get_zone_coordinates()[bairro]
-            print(zona['limite_inferior'], zona['limite_superior'], zona['limite_esquerda'], zona['limite_direita'])
-
-            for i in produtores:
-                print(i.nome_fantasia)
-                print(i.latitude)
-                print(i.longitude)
-
-            produtores = produtores.filter(
-                latitude__range=(zona['limite_inferior'], zona['limite_superior']),
-                # longitude__range=(zona['limite_esquerda'], zona['limite_direita'])
-            )
+        #     produtores = produtores.filter(
+        #         latitude__range=(zona['limite_inferior'], zona['limite_superior']),
+        #         # longitude__range=(zona['limite_esquerda'], zona['limite_direita'])
+        #     )
 
         serializer = ProdutorSerializer(produtores, many=True)
 
