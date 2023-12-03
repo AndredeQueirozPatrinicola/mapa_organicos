@@ -141,6 +141,23 @@ async function addRegisterButtonDropDown(){
 } 
 
 
-addSearchListener()
-addRegisterButtonDropDown()
-createMap()
+
+try{
+    addSearchListener()
+}catch{
+    
+}
+
+try{
+    addRegisterButtonDropDown()
+}catch{
+    
+}
+
+try{
+    createMap()
+}
+catch{
+
+}
+

@@ -19,9 +19,19 @@
     <div class="navbar-user-icon">
 
         {% if user.is_authenticated %}
-
+<!-- 
             <div class="icon-container">
-                <i class="fa-solid fa-user"></i>
+                
+            </div> -->
+            <div class="User" id="User">
+
+                <div class="User-Avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                    <ul class="User-Dropdown" id="user-dropdown">
+                        <li><a href="/accounts/perfil/{{ user.id }}">Meu Perfil</a></li> 
+                        <li><a href="/accounts/logout">Deslogar</a></li> 
+                    </ul>
             </div>
         
         {% else %}
