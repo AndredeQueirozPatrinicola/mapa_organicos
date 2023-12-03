@@ -131,7 +131,7 @@
     font-size: 13px;
     padding: 15px 25px 16px 10px;
     text-decoration: none;
-    color: #1787e0;
+    color: #0b520b;
     transition: all 0.2s ease-out;
   }
   .User-Dropdown span {
@@ -146,7 +146,7 @@
     width: 0px;
     height: 40px;
     position: absolute;
-    background: #2196f3;
+    background: #0b520b;
     margin-top: 4px;
     border-radius: 0 1px 1px 0;
     left: 0px;
