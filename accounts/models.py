@@ -11,7 +11,7 @@ class Usuario(models.Model):
     numero = models.IntegerField(null=True, blank=True)
     latitude = models.CharField(max_length=20, null=True, blank=True)
     longitude = models.CharField(max_length=20, null=True, blank=True)
-    teste = models.CharField(max_length=30)
+    teste = models.CharField(max_length=30, null=True, blank=True)
 
 class Produtor(models.Model):
     TIPO_PRODUTOR = (
