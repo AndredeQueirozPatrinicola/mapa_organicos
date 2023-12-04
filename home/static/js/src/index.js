@@ -5,6 +5,8 @@ const MAP = L.map('map')
 var parser = new DOMParser();
 var markersCluster = []
 
+
+
 async function fetchAPI(url){
     const response = await fetch(url)
     const data = await response.json()

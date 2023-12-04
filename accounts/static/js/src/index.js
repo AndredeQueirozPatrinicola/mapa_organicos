@@ -11,4 +11,16 @@ async function addDropDown(){
     })
 }
 
+async function formatTipoProdutor(){
+    const tipoProdutorField = document.getElementById('tipo-produtor')
+    const TIPO_PRODUTOR = {
+        "P" : "Produtor",
+        "C" : "Comerciante",
+        "F" : "Feira Orgânica"
+    }
+    let tipoProdutor = String(tipoProdutorField.innerHTML)
+    tipoProdutorField.innerHTML = `Tipo: ${TIPO_PRODUTOR[tipoProdutor[tipoProdutor.length - 1]]}`
+
+}
+formatTipoProdutor();
 addDropDown();

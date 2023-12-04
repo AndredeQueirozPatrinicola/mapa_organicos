@@ -27,9 +27,27 @@ def generate_random_email(username):
     domain = "example.com"
     return f"{username}@{domain}"
 
+def get_nome_tipo():
+
+    tipo_establecimento = {
+        "F" : "Feira Organica",
+        "P" : "Produtor",
+        "C" : "Comerciante"
+    }
+
+    tipo_produtor = random.choice(['F', 'P', 'C'])
+
+    return {
+        "tipo" : tipo_produtor,
+        "nome" : tipo_establecimento.get(tipo_produtor)
+    }
+
 def populate_database():
     for _ in range(10):  # Change the number based on how many users you want to create
         # Generate random user details
+        nome_tipo = get_nome_tipo()
+
+
         username = f"user_{random.randint(1000, 9999)}"
         password = "Presuntinho123"
         email = generate_random_email(username)
@@ -42,8 +60,9 @@ def populate_database():
         # Create a Produtor instance
         latitude = round(random.uniform(-23.800214, -23.450131), 6)
         longitude = round(random.uniform(-46.818128, -46.424073), 6)
-        tipo_produtor = random.choice(['F', 'P', 'C'])
-        nome_fantasia = f"{first_name} {last_name}'s Farm"
+        tipo_produtor = nome_tipo.get('tipo')
+        tipo_establecimento = nome_tipo["nome"]
+        nome_fantasia = f"{first_name} {last_name} {tipo_establecimento}"
         logradouro = f"Rua {random.randint(1, 100)}"
         numero = random.randint(10, 1000)
 
